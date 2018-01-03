@@ -15,3 +15,6 @@ Vagrant doesn't install MySQL locally. To run one quickly, you can user Docker:
   * `GRANT PROCESS ON *.* TO 'datadog'@'localhost';`
   * `exit`
   * `mysql -u datadog --password=<dd-mysql-password> -e "show status" | grep Uptime && echo -e "\033[0;32mMySQL user - OK\033[0m"`
+
+**For sake of time this vagrant doesn't automatically configure the MySQL YAML
+- simply `vagrant ssh` and configure by hand for now**
