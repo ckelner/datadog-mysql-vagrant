@@ -1,6 +1,8 @@
 # datadog-mysql-vagrant
 This was built to test reporting on a remote MySQL instance. Therefore this
-Vagrant doesn't install MySQL locally. To run one quickly, you can user Docker:
+Vagrant doesn't install MySQL locally. This was slapped together rather quickly
+so it is missing automation for a number of steps.
+
 
 * Run [MySQL via Docker](https://hub.docker.com/_/mysql/):
   ```
@@ -16,6 +18,7 @@ Vagrant doesn't install MySQL locally. To run one quickly, you can user Docker:
   * `exit`
   * `mysql -u datadog --password=<dd-mysql-password> -e "show status" | grep Uptime && echo -e "\033[0;32mMySQL user - OK\033[0m"`
 * **For sake of time this vagrant doesn't automatically configure the MySQL YAML simply `vagrant ssh` and configure by hand for now**
-* Use the special virtualbox IP `10.0.2.2` to connect to the mysql instance via the host on port `3306`
-
-Spin up a second vagrant the same way using `./second_vagrant/Vagrantfile`
+  * Use the special virtualbox IP `10.0.2.2` to connect to the mysql instance via the host on port `3306`
+* Spin up a second vagrant the same way using `./second_vagrant/Vagrantfile`
+* This will result in hosts reporting the same metric (duplicate) as seen here:
+  ![two-hosts-one-db](https://i.imgur.com/3WD3M1C.png)
